@@ -14,7 +14,7 @@ const SingleEmployee = ({ e }) => {
                     <Card.Text>
                         {post}
                     </Card.Text>
-                    <Button variant="primary">See Details</Button>
+                    <Button className="primary">See Details</Button>
                 </Card.Body>
             </Card>
         </div>
