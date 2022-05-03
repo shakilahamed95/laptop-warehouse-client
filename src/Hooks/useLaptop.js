@@ -4,7 +4,7 @@ const { useState, useEffect } = require("react")
 const useLaptop = () => {
     const [laptops, setLaptops] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/laptops')
+        fetch('https://secret-bastion-79495.herokuapp.com/laptops')
             .then(res => res.json())
             .then(data => setLaptops(data))
     }, [])
