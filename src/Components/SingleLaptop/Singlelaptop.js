@@ -1,8 +1,13 @@
 import React from 'react';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 const Singlelaptop = ({ laptop }) => {
-    const { name, price, quantity, suplier, description, img } = laptop;
+    const { name, price, quantity, suplier, description, img, _id } = laptop;
+    const nevigate = useNavigate()
+    const nevigateToLaptopDetails = _id => {
+        nevigate(`/inventory/${_id}`)
+    }
     return (
         <div>
             <Card style={{ width: '25rem' }}>
@@ -19,7 +24,7 @@ const Singlelaptop = ({ laptop }) => {
                     <ListGroupItem>Suplier : {suplier}</ListGroupItem>
                 </ListGroup>
                 <Card.Body>
-                    <button className='btn btn-primary'>Manage your Stock</button>
+                    <button onClick={() => nevigateToLaptopDetails(_id)} className='btn btn-primary'>Manage your Stock</button>
                 </Card.Body>
             </Card>
 
