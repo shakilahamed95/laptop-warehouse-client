@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useLaptop from '../../Hooks/useLaptop';
 import Brand from '../Brand/Brand';
 import Singlelaptop from '../SingleLaptop/Singlelaptop';
@@ -28,6 +29,7 @@ const Home = () => {
                         ></Singlelaptop>)
                     }
                 </div>
+                <Link to='/inventory'><button className='btn btn-primary mt-5'> Manage Inventory</button></Link>
             </div>
         </div>
     );

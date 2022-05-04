@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Button, FormControl, InputGroup } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import './LaptopDetails.css'
