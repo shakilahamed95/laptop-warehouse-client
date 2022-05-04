@@ -1,17 +1,38 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import './LaptopDetails.css'
 
 const LaptopDetails = () => {
     const { id } = useParams()
     const [laptopDetails, setLaptopDetails] = useState({})
     useEffect(() => {
-        const url = `http://localhost:5000/laptop/${id}`
+        const url = `http://localhost:5000/laptops/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setLaptopDetails(data))
 
     }, [])
+
+
+    const handleUpdateUser = event => {
+        const { quantity } = laptopDetails;
+        let newQuantity = parseInt(quantity) - 1;
+        const updatedValue = { ...laptopDetails, quantity: newQuantity };
+        setLaptopDetails(updatedValue)
+        toast("One item have been delivered sucessfully....")
+
+        const url = `http://localhost:5000/laptops/${id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedValue)
+        })
+            .then(res => res.json())
+            .then(data => { })
+    }
     return (
         <div>
             <h1 className='mt-5 p-5'>{laptopDetails.name}</h1>
@@ -25,7 +46,7 @@ const LaptopDetails = () => {
                     <p>{laptopDetails.description}</p>
                     <h5>Avalilable quantity:{laptopDetails.quantity}</h5>
                     <h5>Suplier Name :{laptopDetails.suplier}</h5>
-                    <button className='btn btn-primary'>Delivered</button>
+                    <button onClick={() => handleUpdateUser(id)} className='btn btn-primary'>Delivered</button>
                 </div>
             </div>
         </div>

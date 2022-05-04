@@ -1,5 +1,4 @@
 import React from 'react';
-import useLaptop from '../../Hooks/useLaptop';
 
 const Inventory = () => {
 
