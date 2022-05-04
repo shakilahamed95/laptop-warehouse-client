@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Button, FormControl, InputGroup } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import './LaptopDetails.css'
@@ -7,7 +8,7 @@ const LaptopDetails = () => {
     const { id } = useParams()
     const [laptopDetails, setLaptopDetails] = useState({})
     useEffect(() => {
-        const url = `http://localhost:5000/laptops/${id}`;
+        const url = `https://secret-bastion-79495.herokuapp.com/laptops/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setLaptopDetails(data))
@@ -15,20 +16,41 @@ const LaptopDetails = () => {
     }, [])
 
 
-    const handleUpdateUser = event => {
+    const handleDelivery = event => {
         const { quantity } = laptopDetails;
         let newQuantity = parseInt(quantity) - 1;
         const updatedValue = { ...laptopDetails, quantity: newQuantity };
         setLaptopDetails(updatedValue)
         toast("One item have been delivered sucessfully....")
 
-        const url = `http://localhost:5000/laptops/${id}`;
+        const url = `https://secret-bastion-79495.herokuapp.com/laptops/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             },
             body: JSON.stringify(updatedValue)
+        })
+            .then(res => res.json())
+            .then(data => { })
+    }
+    const handleReStock = event => {
+        event.preventDefault()
+        const { quantity } = laptopDetails;
+        const restock = parseInt(event.target.stock.value)
+        let newQuantity = parseInt(quantity) + restock;
+        const updatedQuantity = { ...laptopDetails, quantity: newQuantity };
+        setLaptopDetails(updatedQuantity)
+        event.target.reset();
+        toast(`you have restock ${restock} items...`)
+
+        const url = `https://secret-bastion-79495.herokuapp.com/laptops/${id}`;
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(updatedQuantity)
         })
             .then(res => res.json())
             .then(data => { })
@@ -46,7 +68,15 @@ const LaptopDetails = () => {
                     <p>{laptopDetails.description}</p>
                     <h5>Avalilable quantity:{laptopDetails.quantity}</h5>
                     <h5>Suplier Name :{laptopDetails.suplier}</h5>
-                    <button onClick={() => handleUpdateUser(id)} className='btn btn-primary'>Delivered</button>
+                    <button onClick={() => handleDelivery(id)} className='btn btn-primary'>Delivered</button><br />
+                    <h3 className='mt-2 text-primary'>Restock the items</h3>
+                    <div>
+                        <form onSubmit={handleReStock}>
+                            <input className='p-2 ' type="text" name="stock" placeholder='Please restock number' required />
+                            <br />
+                            <input className='btn btn-primary mt-2' type="submit" value="Restock" />
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
