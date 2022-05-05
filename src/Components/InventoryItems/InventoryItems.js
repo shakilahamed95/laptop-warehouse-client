@@ -7,16 +7,13 @@ const InventoryItems = ({ laptop }) => {
     const handleDelete = id => {
         const proceed = window.confirm('Do you really want to delete this item??');
         if (proceed) {
-            console.log('deleting user with id, ', id);
-            const url = `http://localhost:5000/laptops/${id}`;
+            const url = `https://secret-bastion-79495.herokuapp.com/laptops/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
                     if (data.deletedCount > 0) {
-                        console.log('deleted');
                         const remainingData = laptops.filter(laptop => laptop._id != id);
                         setLaptops(remainingData);
                     }
