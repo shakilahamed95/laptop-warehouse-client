@@ -5,7 +5,7 @@ import InventoryItems from '../InventoryItems/InventoryItems';
 
 
 const ManageInventory = () => {
-    const [laptops, setLaptops] = useLaptop()
+    const [laptops] = useLaptop()
     return (
         <div className='mt-5 w-100'>
             <Table striped bordered hover>
