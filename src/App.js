@@ -10,6 +10,7 @@ import LaptopDetails from './Components/LaptopDetails/LaptopDetails';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ManageInventory from './Components/ManageInventory/ManageInventory';
+import RequireAuth from './Components/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -19,7 +20,11 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='/inventory' element={<ManageInventory></ManageInventory>}></Route>
-        <Route path='/inventory/:id' element={<LaptopDetails></LaptopDetails>}></Route>
+        <Route path='/inventory/:id' element={
+          <RequireAuth>
+            <LaptopDetails></LaptopDetails>
+          </RequireAuth>
+        }></Route>
         <Route path='/login' element={<Login></Login>}></Route>
       </Routes>
       <Footer></Footer>
