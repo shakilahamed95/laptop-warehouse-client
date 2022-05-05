@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ManageInventory from './Components/ManageInventory/ManageInventory';
 import RequireAuth from './Components/RequireAuth/RequireAuth';
+import AddItem from './Components/AddItem/AddItem';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <LaptopDetails></LaptopDetails>
           </RequireAuth>
         }></Route>
+        <Route path='/addnew' element={<AddItem></AddItem>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
       </Routes>
       <Footer></Footer>

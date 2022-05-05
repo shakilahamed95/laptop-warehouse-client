@@ -1,11 +1,16 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import useLaptop from '../../Hooks/useLaptop';
 import InventoryItems from '../InventoryItems/InventoryItems';
 
 
 const ManageInventory = () => {
     const [laptops] = useLaptop()
+    const navigate = useNavigate()
+    const handleAddNew = () => {
+        navigate('/addnew')
+    }
     return (
         <div className='mt-5 w-100'>
             <Table striped bordered hover>
@@ -33,6 +38,7 @@ const ManageInventory = () => {
                     }
                 </tbody>
             </Table>
+            <button onClick={handleAddNew} className='btn btn-primary mt-5'>Add new Items</button>
         </div>
     );
 };
