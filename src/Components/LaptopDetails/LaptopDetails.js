@@ -54,6 +54,29 @@ const LaptopDetails = () => {
             .then(res => res.json())
             .then(data => { })
     }
+
+    const handleMyItem = (event) => {
+        const myItem = {
+            name: laptopDetails.name,
+            price: laptopDetails.price,
+            quantity: laptopDetails.quantity,
+            suplier: laptopDetails.suplier,
+            description: laptopDetails.description,
+            img: laptopDetails.img
+        }
+        fetch('http://localhost:5000/myItem', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(myItem)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast("You have susscessfully added this as MY item")
+            })
+
+    }
     return (
         <div>
             <h1 className='mt-5 p-5'>{laptopDetails.name}</h1>
@@ -67,7 +90,9 @@ const LaptopDetails = () => {
                     <p>{laptopDetails.description}</p>
                     <h5>Avalilable quantity:{laptopDetails.quantity}</h5>
                     <h5>Suplier Name :{laptopDetails.suplier}</h5>
-                    <button onClick={() => handleDelivery(id)} className='btn btn-primary'>Delivered</button><br />
+                    <button onClick={() => handleDelivery(id)} className='btn btn-primary'>Delivered</button>
+                    <button onClick={handleMyItem} className='btn btn-primary ms-2'>Add As My Item</button>
+                    <br />
                     <h3 className='mt-2 text-primary'>Restock the items</h3>
                     <div>
                         <form onSubmit={handleReStock}>

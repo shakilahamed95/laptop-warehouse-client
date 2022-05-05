@@ -7,11 +7,12 @@ import SignUp from './Components/SignUp/SignUp';
 import Login from './Components/Login/Login';
 import Footer from './Components/Footer/Footer';
 import LaptopDetails from './Components/LaptopDetails/LaptopDetails';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ManageInventory from './Components/ManageInventory/ManageInventory';
 import RequireAuth from './Components/RequireAuth/RequireAuth';
 import AddItem from './Components/AddItem/AddItem';
+import MyItem from './Components/MyItem/MyItem';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route path='/addnew' element={<AddItem></AddItem>}></Route>
+        <Route path='/myitem' element={<MyItem></MyItem>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
       </Routes>
       <Footer></Footer>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { toast } from 'react-toastify';
 import useLaptop from '../../Hooks/useLaptop';
 
 const InventoryItems = ({ laptop }) => {
@@ -20,6 +21,29 @@ const InventoryItems = ({ laptop }) => {
                 })
         }
     }
+
+    const handleMyItem = (event) => {
+        const myItem = {
+            name: name,
+            price: price,
+            quantity: quantity,
+            suplier: suplier,
+            description: description,
+            img: img
+        }
+        fetch('http://localhost:5000/myItem', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(myItem)
+        })
+            .then(res => res.json())
+            .then(data => {
+                toast("You have susscessfully added this as MY item")
+            })
+
+    }
     return (
         <tr>
             <td className='text-start'>{name}</td>
@@ -28,6 +52,7 @@ const InventoryItems = ({ laptop }) => {
             <td><img style={{ width: "80px", height: "80px" }} src={img} alt="" /></td>
             <td>{quantity}</td>
             <td><button onClick={() => handleDelete(_id)} className='btn btn-primary'>Delete this item</button></td>
+            <td><button onClick={handleMyItem} className='btn btn-primary'>Add As My Item</button></td>
         </tr>
     );
 };

@@ -86,7 +86,7 @@ const SignUp = () => {
                     <p className='text-danger'>  {errors?.emailError}</p>
                 </Form.Group>
 
-                <Form.Group className="mb-3" controlId="formBasicPassword">
+                <Form.Group className="mb-3" controlId="formPassword">
                     <Form.Control onChange={handlePasswordChange} type="password" name='password' id='' placeholder="Password" required />
                     <p className='text-danger'> {errors?.passwordError}</p>
                 </Form.Group>
