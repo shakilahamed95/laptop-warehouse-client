@@ -1,19 +1,23 @@
 
 import React from 'react';
 import { Form } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 
 const AddItem = () => {
+    const [user] = useAuthState(auth)
     const handleAddLaptp = event => {
         event.preventDefault();
+        const email = user.email
         const name = event.target.name.value;
         const price = event.target.price.value;
         const quantity = event.target.quantity.value;
         const suplier = event.target.suplier.value;
         const description = event.target.description.value;
         const img = event.target.img.value;
-        const newlaptop = { name, price, quantity, suplier, description, img }
-        fetch('https://secret-bastion-79495.herokuapp.com/laptops', {
+        const newlaptop = { name, email, price, quantity, suplier, description, img }
+        fetch('http://localhost:5000/myItem', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

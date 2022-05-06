@@ -1,27 +1,32 @@
-import React from 'react';
-import { toast } from 'react-toastify';
-import useLaptop from '../../Hooks/useLaptop';
+import React, { useEffect, useState } from 'react';
 
-const InventoryItems = ({ laptop }) => {
+const MySingleItem = ({ laptop }) => {
     const { name, price, quantity, suplier, description, img, _id } = laptop;
-    const [laptops, setLaptops] = useLaptop()
+    const [laptops, setLaptops] = useState([])
+    useEffect(() => {
+        const url = 'http://localhost:5000/myItem'
+        fetch(url)
+            .then(res => res.json())
+            .then(data => setLaptops(data))
+    }, [laptops])
     const handleDelete = id => {
+        console.log(id);
         const proceed = window.confirm('Do you really want to delete this item??');
         if (proceed) {
-            const url = `https://secret-bastion-79495.herokuapp.com/laptops/${id}`;
+            const url = `http://localhost:5000/myItem/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
+                    console.log(data);
                     if (data.deletedCount > 0) {
-                        const remainingData = laptops.filter(laptop => laptop._id != id);
+                        const remainingData = laptops.filter(laptop => laptop._id !== id);
                         setLaptops(remainingData);
                     }
                 })
         }
     }
-
     return (
         <tr>
             <td className='text-start'>{name}</td>
@@ -34,4 +39,4 @@ const InventoryItems = ({ laptop }) => {
     );
 };
 
-export default InventoryItems;
+export default MySingleItem;

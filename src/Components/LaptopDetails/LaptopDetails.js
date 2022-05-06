@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import auth from '../../firebase.init';
 import './LaptopDetails.css'
 
 const LaptopDetails = () => {
+    const [user] = useAuthState(auth)
     const { id } = useParams()
     const [laptopDetails, setLaptopDetails] = useState({})
     useEffect(() => {
@@ -57,6 +60,7 @@ const LaptopDetails = () => {
 
     const handleMyItem = (event) => {
         const myItem = {
+            email: user.email,
             name: laptopDetails.name,
             price: laptopDetails.price,
             quantity: laptopDetails.quantity,
