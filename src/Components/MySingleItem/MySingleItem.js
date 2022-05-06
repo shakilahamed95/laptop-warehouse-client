@@ -4,22 +4,21 @@ const MySingleItem = ({ laptop }) => {
     const { name, price, quantity, suplier, description, img, _id } = laptop;
     const [laptops, setLaptops] = useState([])
     useEffect(() => {
-        const url = 'http://localhost:5000/myItem'
+        const url = 'https://secret-bastion-79495.herokuapp.com/myItem'
         fetch(url)
             .then(res => res.json())
             .then(data => setLaptops(data))
     }, [laptops])
     const handleDelete = id => {
-        console.log(id);
         const proceed = window.confirm('Do you really want to delete this item??');
         if (proceed) {
-            const url = `http://localhost:5000/myItem/${id}`;
+            const url = `https://secret-bastion-79495.herokuapp.com/myItem/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+
                     if (data.deletedCount > 0) {
                         const remainingData = laptops.filter(laptop => laptop._id !== id);
                         setLaptops(remainingData);

@@ -68,7 +68,7 @@ const LaptopDetails = () => {
             description: laptopDetails.description,
             img: laptopDetails.img
         }
-        fetch('http://localhost:5000/myItem', {
+        fetch('https://secret-bastion-79495.herokuapp.com/myItem', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

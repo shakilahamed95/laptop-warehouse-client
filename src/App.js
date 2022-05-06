@@ -13,6 +13,7 @@ import ManageInventory from './Components/ManageInventory/ManageInventory';
 import RequireAuth from './Components/RequireAuth/RequireAuth';
 import AddItem from './Components/AddItem/AddItem';
 import MyItem from './Components/MyItem/MyItem';
+import NotFound from './Components/NotFound/NotFound';
 
 function App() {
   return (
@@ -21,19 +22,28 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
-        <Route path='/inventory' element={<ManageInventory></ManageInventory>}></Route>
+        <Route path='/inventory' element={
+          <RequireAuth>
+            <ManageInventory></ManageInventory>
+          </RequireAuth>
+        }></Route>
         <Route path='/inventory/:id' element={
           <RequireAuth>
             <LaptopDetails></LaptopDetails>
           </RequireAuth>
         }></Route>
-        <Route path='/addnew' element={<AddItem></AddItem>}></Route>
+        <Route path='/addnew' element={
+          <RequireAuth>
+            <AddItem></AddItem>
+          </RequireAuth>
+        }></Route>
         <Route path='/myitem' element={
           <RequireAuth>
             <MyItem></MyItem>
           </RequireAuth>
         }></Route>
         <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
       <ToastContainer />

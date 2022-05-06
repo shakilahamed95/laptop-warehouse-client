@@ -9,7 +9,7 @@ const AddItem = () => {
     const [user] = useAuthState(auth)
     const handleAddLaptp = event => {
         event.preventDefault();
-        const email = user.email
+        const email = user?.email
         const name = event.target.name.value;
         const price = event.target.price.value;
         const quantity = event.target.quantity.value;
@@ -17,7 +17,7 @@ const AddItem = () => {
         const description = event.target.description.value;
         const img = event.target.img.value;
         const newlaptop = { name, email, price, quantity, suplier, description, img }
-        fetch('http://localhost:5000/myItem', {
+        fetch('https://secret-bastion-79495.herokuapp.com/myItem', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -33,7 +33,7 @@ const AddItem = () => {
 
     return (
         <div className='mx-auto container w-50 mt-5'>
-            <h1 className='text-center text-primary mt-5 p-3'>Insert A Laptop</h1>
+            <h1 className='text-center text-primary mt-5 p-3'>Insert A New Laptop</h1>
             <Form onSubmit={handleAddLaptp}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Control type="text" name='name' placeholder="Enter Laptop Name" required />

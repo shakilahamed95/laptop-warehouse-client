@@ -10,6 +10,7 @@ import './Login.css'
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import GoogleLogin from '../GoogleLogin/GoogleLogin';
+import Loading from '../Loading/Loading';
 
 const Login = () => {
     const [userInfo, setUserInfo] = useState({
@@ -54,6 +55,7 @@ const Login = () => {
     const from = location.state?.from?.pathname || "/";
 
     useEffect(() => {
+        if (loading) return <Loading></Loading>
         if (user) {
             navigate(from);
         }

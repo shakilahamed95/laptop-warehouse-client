@@ -9,7 +9,7 @@ const MyItem = () => {
     const [laptops, setLaptops] = useState([]);
     useEffect(() => {
         const email = user.email;
-        fetch(`http://localhost:5000/myItem?email=${email}`)
+        fetch(`https://secret-bastion-79495.herokuapp.com/myItem?email=${email}`)
             .then(res => res.json())
             .then(data => setLaptops(data))
     }, [user])
