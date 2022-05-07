@@ -11,6 +11,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import GoogleLogin from '../GoogleLogin/GoogleLogin';
 import Loading from '../Loading/Loading';
+import axios from 'axios';
 
 const Login = () => {
     const [userInfo, setUserInfo] = useState({
@@ -57,7 +58,7 @@ const Login = () => {
     useEffect(() => {
         if (loading) return <Loading></Loading>
         if (user) {
-            navigate(from);
+            navigate(from, { replace: true });
         }
     }, [user]);
     const nevigate = useNavigate()
@@ -65,10 +66,11 @@ const Login = () => {
         nevigate('/signup')
     }
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
+        await signInWithEmail(userInfo.email, userInfo.password);
 
-        signInWithEmail(userInfo.email, userInfo.password);
+
 
     }
     const handleResetPassword = (e) => {

@@ -7,7 +7,7 @@ import SingleEmployee from '../SingleEmployee/SingleEmployee';
 const TeamMember = () => {
     const [employee, setEmployee] = useState([])
     useEffect(() => {
-        fetch('employee.json')
+        fetch('https://secret-bastion-79495.herokuapp.com/employee')
             .then(res => res.json())
             .then(data => setEmployee(data))
     }, [])
@@ -29,7 +29,7 @@ const TeamMember = () => {
             <div className='container employee-container'>
                 {
                     employee.map(e => <SingleEmployee
-                        key={e.id}
+                        key={e._id}
                         e={e}
                     ></SingleEmployee>)
                 }

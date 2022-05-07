@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 
 const MySingleItem = ({ laptop }) => {
     const { name, price, quantity, suplier, description, img, _id } = laptop;
-    const [laptops, setLaptops] = useState([])
+    const [myitems, setMyitems] = useState([])
     useEffect(() => {
         const url = 'https://secret-bastion-79495.herokuapp.com/myItem'
-        fetch(url)
+        fetch(url, {
+            headers: {
+                autherization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
-            .then(data => setLaptops(data))
-    }, [laptops])
+            .then(data => setMyitems(data))
+
+    }, [myitems])
     const handleDelete = id => {
         const proceed = window.confirm('Do you really want to delete this item??');
         if (proceed) {
@@ -18,10 +24,10 @@ const MySingleItem = ({ laptop }) => {
             })
                 .then(res => res.json())
                 .then(data => {
-
                     if (data.deletedCount > 0) {
-                        const remainingData = laptops.filter(laptop => laptop._id !== id);
-                        setLaptops(remainingData);
+                        const remainingData = myitems.filter(item => item._id != id);
+                        setMyitems(remainingData);
+                        toast("you have successfully deleted the item")
                     }
                 })
         }

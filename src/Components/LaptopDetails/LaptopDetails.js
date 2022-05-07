@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import auth from '../../firebase.init';
 import './LaptopDetails.css'
 
 const LaptopDetails = () => {
-    const [user] = useAuthState(auth)
     const { id } = useParams()
     const [laptopDetails, setLaptopDetails] = useState({})
     useEffect(() => {
@@ -58,29 +55,6 @@ const LaptopDetails = () => {
             .then(data => { })
     }
 
-    const handleMyItem = (event) => {
-        const myItem = {
-            email: user.email,
-            name: laptopDetails.name,
-            price: laptopDetails.price,
-            quantity: laptopDetails.quantity,
-            suplier: laptopDetails.suplier,
-            description: laptopDetails.description,
-            img: laptopDetails.img
-        }
-        fetch('https://secret-bastion-79495.herokuapp.com/myItem', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(myItem)
-        })
-            .then(res => res.json())
-            .then(data => {
-                toast("You have susscessfully added this as MY item")
-            })
-
-    }
     return (
         <div>
             <h1 className='mt-5 p-5'>{laptopDetails.name}</h1>
@@ -95,12 +69,11 @@ const LaptopDetails = () => {
                     <h5>Avalilable quantity:{laptopDetails.quantity}</h5>
                     <h5>Suplier Name :{laptopDetails.suplier}</h5>
                     <button onClick={() => handleDelivery(id)} className='btn btn-primary'>Delivered</button>
-                    <button onClick={handleMyItem} className='btn btn-primary ms-2'>Add As My Item</button>
                     <br />
                     <h3 className='mt-2 text-primary'>Restock the items</h3>
                     <div>
                         <form onSubmit={handleReStock}>
-                            <input className='p-2 ' type="text" name="stock" placeholder='Please restock number' required />
+                            <input className='p-2 ' type="text" name="stock" placeholder='Please enter restock number' required />
                             <br />
                             <input className='btn btn-primary mt-2' type="submit" value="Restock" />
                         </form>

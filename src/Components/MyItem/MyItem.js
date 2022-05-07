@@ -12,9 +12,10 @@ const MyItem = () => {
         fetch(`https://secret-bastion-79495.herokuapp.com/myItem?email=${email}`)
             .then(res => res.json())
             .then(data => setLaptops(data))
-    }, [user])
+    }, [laptops, user])
     return (
         <div className='mt-5 w-100'>
+            <h1 className='text-primary'>You Have {laptops.length} Item As Your Item</h1>
             <Table striped bordered hover>
                 <thead>
                     <tr>

@@ -1,4 +1,5 @@
-import Loading from "../Components/Loading/Loading";
+
+
 
 const { useState, useEffect } = require("react")
 
@@ -10,9 +11,7 @@ const useLaptop = () => {
             .then(res => res.json())
             .then(data => setLaptops(data))
     }, [laptops])
-    if (!laptops) {
-        return <Loading></Loading>
-    }
-    return [laptops, setLaptops]
+
+    return [laptops, setLaptops,]
 }
 export default useLaptop;
