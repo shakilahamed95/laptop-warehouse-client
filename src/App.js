@@ -14,6 +14,7 @@ import RequireAuth from './Components/RequireAuth/RequireAuth';
 import AddItem from './Components/AddItem/AddItem';
 import MyItem from './Components/MyItem/MyItem';
 import NotFound from './Components/NotFound/NotFound';
+import Blogs from './Components/Blogs/Blogs';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
+        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/inventory' element={
           <RequireAuth>
             <ManageInventory></ManageInventory>

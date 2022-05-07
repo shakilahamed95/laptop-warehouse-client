@@ -29,9 +29,13 @@ const Header = () => {
                             }
                             {
                                 user ? <button onClick={handleSignout} className='btn btn-dark'>Log Out</button>
-                                    : <Nav.Link className='text-light' as={Link} to="/login">Login</Nav.Link>
+                                    : <>
+                                        <Nav.Link className='text-light' as={Link} to="/login">Login</Nav.Link>
+                                        <Nav.Link className='text-light' as={Link} to="/signup">Sign Up</Nav.Link>
+                                    </>
                             }
-                            <Nav.Link className='text-light' as={Link} to="/signup">Sign Up</Nav.Link>
+                            <Nav.Link className='text-light' as={Link} to="/blogs">Blogs</Nav.Link>
+
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
