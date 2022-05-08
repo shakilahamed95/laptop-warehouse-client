@@ -23,7 +23,7 @@ const LaptopDetails = () => {
         setLaptopDetails(updatedValue)
         toast("One item have been delivered sucessfully....")
 
-        const url = `http://localhost:5000/laptops/${id}`;
+        const url = `https://secret-bastion-79495.herokuapp.com/laptops/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
