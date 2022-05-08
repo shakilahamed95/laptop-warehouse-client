@@ -6,11 +6,7 @@ const MySingleItem = ({ laptop }) => {
     const [myitems, setMyitems] = useState([])
     useEffect(() => {
         const url = 'https://secret-bastion-79495.herokuapp.com/myItem'
-        fetch(url, {
-            headers: {
-                autherization: `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        })
+        fetch(url, {})
             .then(res => res.json())
             .then(data => setMyitems(data))
 

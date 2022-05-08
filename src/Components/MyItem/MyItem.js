@@ -8,8 +8,14 @@ const MyItem = () => {
     const [user] = useAuthState(auth)
     const [myitems, setMyitems] = useState([]);
     useEffect(() => {
+
         const email = user.email;
-        fetch(`https://secret-bastion-79495.herokuapp.com/myItem?email=${email}`)
+        const url = `https://secret-bastion-79495.herokuapp.com/myItem?email=${email}`
+        fetch(url, {
+            headers: {
+                autherization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
             .then(data => setMyitems(data))
     }, [myitems, user])
