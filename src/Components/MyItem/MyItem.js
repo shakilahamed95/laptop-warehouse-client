@@ -6,16 +6,16 @@ import MySingleItem from '../MySingleItem/MySingleItem';
 
 const MyItem = () => {
     const [user] = useAuthState(auth)
-    const [laptops, setLaptops] = useState([]);
+    const [myitems, setMyitems] = useState([]);
     useEffect(() => {
         const email = user.email;
         fetch(`https://secret-bastion-79495.herokuapp.com/myItem?email=${email}`)
             .then(res => res.json())
-            .then(data => setLaptops(data))
-    }, [laptops, user])
+            .then(data => setMyitems(data))
+    }, [myitems, user])
     return (
         <div className='mt-5 w-100'>
-            <h1 className='text-primary'>You Have {laptops.length} Item As Your Item</h1>
+            <h1 className='text-primary'>You Have {myitems.length} Item As Your Item</h1>
             <Table striped bordered hover>
                 <thead>
                     <tr>
@@ -29,7 +29,7 @@ const MyItem = () => {
                 </thead>
                 <tbody>
                     {
-                        laptops.map(laptop => {
+                        myitems.map(laptop => {
 
                             return (
                                 <MySingleItem
