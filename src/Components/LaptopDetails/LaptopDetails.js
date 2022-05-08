@@ -6,7 +6,6 @@ import './LaptopDetails.css'
 const LaptopDetails = () => {
     const { id } = useParams()
     const [laptopDetails, setLaptopDetails] = useState({})
-  
     useEffect(() => {
         const url = `https://secret-bastion-79495.herokuapp.com/laptops/${id}`;
         fetch(url)
@@ -17,13 +16,14 @@ const LaptopDetails = () => {
 
 
     const handleDelivery = event => {
-        const { quantity } = laptopDetails;
+        const { quantity, sold } = laptopDetails;
         let newQuantity = parseInt(quantity) - 1;
-        const updatedValue = { ...laptopDetails, quantity: newQuantity };
+        let newSold = parseInt(sold) + 1;
+        const updatedValue = { ...laptopDetails, quantity: newQuantity, sold: newSold };
         setLaptopDetails(updatedValue)
         toast("One item have been delivered sucessfully....")
 
-        const url = `https://secret-bastion-79495.herokuapp.com/laptops/${id}`;
+        const url = `http://localhost:5000/laptops/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -69,6 +69,7 @@ const LaptopDetails = () => {
                     <p>{laptopDetails.description}</p>
                     <h5>Avalilable quantity:{laptopDetails.quantity}</h5>
                     <h5>Suplier Name :{laptopDetails.suplier}</h5>
+                    <h5>Sold:{laptopDetails.sold}</h5>
                     <button onClick={() => handleDelivery(id)} className='btn btn-primary'>Delivered</button>
                     <br />
                     <h3 className='mt-2 text-primary'>Restock the items</h3>
