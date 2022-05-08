@@ -7,7 +7,7 @@ const SingleEmployee = ({ e }) => {
     const { name, post, img } = e;
     return (
         <div className='mt-3'>
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '18rem' }} className=' employee'>
                 <Card.Img variant="top" src={img} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>

@@ -10,31 +10,31 @@ import './Home.css'
 
 
 const Home = () => {
-    const [laptops, setLaptops] = useLaptop()
+    const [laptops, setLaptops, isLoading] = useLaptop()
     if (laptops.length > 6) {
         setLaptops(laptops.slice(0, 6))
     }
     return (
-        <div className='container'>
-            <Slider></Slider>
-            <TeamMember></TeamMember>
-            <Brand></Brand>
+        isLoading ? <Loading></Loading> :
             <div>
-                <h1 className='text-primary mt-3 mb-3'>Our inventory items </h1>
-                <div className='inventory-container'>
+                <Slider></Slider>
+                <TeamMember></TeamMember>
+                <Brand></Brand>
+                <div>
+                    <h1 className='text-primary mt-3 mb-3'>Our inventory items </h1>
+                    <div className='inventory-container'>
+                        {
+                            laptops.map(laptop => <Singlelaptop
+                                key={laptop._id}
+                                laptop={laptop}
+                            ></Singlelaptop>)
 
+                        }
 
-                    {
-                        (!laptops) ? <Loading></Loading> : (laptops.map(laptop => <Singlelaptop
-                            key={laptop._id}
-                            laptop={laptop}
-                        ></Singlelaptop>))
-                    }
-
+                    </div>
+                    <Link to='/inventory'><button className='btn btn-primary mt-5'> Manage Inventory</button></Link>
                 </div>
-                <Link to='/inventory'><button className='btn btn-primary mt-5'> Manage Inventory</button></Link>
             </div>
-        </div>
     );
 };
 

@@ -17,6 +17,8 @@ const InventoryItems = ({ laptop }) => {
                     if (data.deletedCount > 0) {
                         const remainingData = laptops.filter(laptop => laptop._id != id);
                         setLaptops(remainingData);
+                        toast("You have sucessifully deleted an item. just wait to see the updated list")
+
                     }
                 })
         }

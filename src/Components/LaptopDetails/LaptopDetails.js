@@ -6,6 +6,7 @@ import './LaptopDetails.css'
 const LaptopDetails = () => {
     const { id } = useParams()
     const [laptopDetails, setLaptopDetails] = useState({})
+  
     useEffect(() => {
         const url = `https://secret-bastion-79495.herokuapp.com/laptops/${id}`;
         fetch(url)
@@ -56,7 +57,7 @@ const LaptopDetails = () => {
     }
 
     return (
-        <div>
+        <div className='laptop-detail'>
             <h1 className='mt-5 p-5'>{laptopDetails.name}</h1>
             <div className='d-flex'>
                 <div>

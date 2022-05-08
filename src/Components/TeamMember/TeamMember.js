@@ -15,7 +15,7 @@ const TeamMember = () => {
         <div>
             <h1 className='text-primary text-center intro-text'> Our Team Members</h1>
             <div className='d-flex justify-content-center ceo'>
-                <Card style={{ width: '18rem' }}>
+                <Card style={{ width: '18rem' }} className='employee'>
                     <Card.Img variant="top" src={guy1} />
                     <Card.Body>
                         <Card.Title>Md.Tanveer</Card.Title>

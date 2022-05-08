@@ -3,6 +3,12 @@
     height: 500px;
 }
 
+.laptop-detail {
+    margin: 20px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
 .increase-field {
     margin-left: 300px;
     width: 300px;

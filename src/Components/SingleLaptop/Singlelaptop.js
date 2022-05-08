@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, ListGroup, ListGroupItem } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import './Singlelaptop.css'
 
 const Singlelaptop = ({ laptop }) => {
     const { name, price, quantity, suplier, description, img, _id } = laptop;
@@ -10,7 +11,7 @@ const Singlelaptop = ({ laptop }) => {
     }
     return (
         <div>
-            <Card style={{ width: '25rem' }}>
+            <Card style={{ width: '25rem' }} className='single-item'>
                 <Card.Img style={{ width: "350px", height: "350px" }} variant="top" src={img} />
                 <Card.Body>
                     <Card.Title>{name}</Card.Title>

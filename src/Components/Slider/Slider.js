@@ -7,27 +7,38 @@ import image3 from '../../images/banner/image3.jpeg'
 const Slider = () => {
     return (
         <div className='mt-5'>
-            <Carousel fade>
+            <Carousel>
+                <Carousel.Item>
+                    <img
+                        className="d-block w-100"
+                        src={image3}
+                        alt="First slide"
+                    />
+                    <Carousel.Caption>
+                        <h3 className='text-dark'>HP LAPTOPS</h3>
+                    </Carousel.Caption>
+                </Carousel.Item>
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
                         src={image1}
-                        alt="First slide"
+                        alt="Second slide"
                     />
+
+                    <Carousel.Caption>
+                        <h3 className='text-dark'>LENOVO LAPTOPS</h3>
+                    </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
                         src={image2}
-                        alt="Second slide"
-                    />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={image3}
                         alt="Third slide"
                     />
+
+                    <Carousel.Caption>
+                        <h3 className='text-dark'>DELL LAPTOPS</h3>
+                    </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
         </div>
