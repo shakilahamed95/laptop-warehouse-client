@@ -7,13 +7,13 @@ import SingleEmployee from '../SingleEmployee/SingleEmployee';
 const TeamMember = () => {
     const [employee, setEmployee] = useState([])
     useEffect(() => {
-        fetch('https://secret-bastion-79495.herokuapp.com/employee')
+        fetch('https://secret-bastion-79495.herokuapp.com/employee')   
             .then(res => res.json())
             .then(data => setEmployee(data))
     }, [])
     return (
         <div>
-            <h1 className='text-primary text-center intro-text'> Our Team Members</h1>
+            <h1 className='text-primary text-center intro-text mt-5'> Our Team Members</h1>
             <div className='d-flex justify-content-center ceo'>
                 <Card style={{ width: '18rem' }} className='employee'>
                     <Card.Img variant="top" src={guy1} />
