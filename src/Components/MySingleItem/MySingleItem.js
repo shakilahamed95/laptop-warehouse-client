@@ -5,7 +5,7 @@ const MySingleItem = ({ laptop }) => {
     const { name, price, quantity, suplier, description, img, _id } = laptop;
     const [myitems, setMyitems] = useState([])
     useEffect(() => {
-        const url = 'https://secret-bastion-79495.herokuapp.com/myItem'
+        const url = 'https://laptop-warehouse-server-zhm5.onrender.com/myItem'
         fetch(url, {})
             .then(res => res.json())
             .then(data => setMyitems(data))
@@ -14,7 +14,7 @@ const MySingleItem = ({ laptop }) => {
     const handleDelete = id => {
         const proceed = window.confirm('Do you really want to delete this item??');
         if (proceed) {
-            const url = `https://secret-bastion-79495.herokuapp.com/myItem/${id}`;
+            const url = `https://laptop-warehouse-server-zhm5.onrender.com/myItem/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

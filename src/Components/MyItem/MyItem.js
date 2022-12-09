@@ -10,7 +10,7 @@ const MyItem = () => {
     useEffect(() => {
 
         const email = user.email;
-        const url = `https://secret-bastion-79495.herokuapp.com/myItem?email=${email}`
+        const url = `https://laptop-warehouse-server-zhm5.onrender.com/myItem?email=${email}`
         fetch(url, {
             headers: {
                 autherization: `Bearer ${localStorage.getItem('accessToken')}`

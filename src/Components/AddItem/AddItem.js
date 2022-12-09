@@ -16,7 +16,7 @@ const AddItem = () => {
         const description = event.target.description.value;
         const img = event.target.img.value;
         const newlaptop = { name, email, price, quantity, suplier, description, img }
-        fetch('https://secret-bastion-79495.herokuapp.com/myItem', {
+        fetch('https://laptop-warehouse-server-zhm5.onrender.com/myItem', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

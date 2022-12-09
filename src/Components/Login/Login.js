@@ -71,7 +71,7 @@ const Login = () => {
         // const email = userInfo.email;
         await signInWithEmail(userInfo.email, userInfo.password);
 
-        // const { data } = await axios.post('https://secret-bastion-79495.herokuapp.com/login', { email })
+        // const { data } = await axios.post('https://laptop-warehouse-server-zhm5.onrender.com/login', { email })
         // localStorage.setItem('accessToken', data.accessToken)
 
 

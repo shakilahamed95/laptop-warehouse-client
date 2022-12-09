@@ -7,7 +7,7 @@ const LaptopDetails = () => {
     const { id } = useParams()
     const [laptopDetails, setLaptopDetails] = useState({})
     useEffect(() => {
-        const url = `https://secret-bastion-79495.herokuapp.com/laptops/${id}`;
+        const url = `https://laptop-warehouse-server-zhm5.onrender.com/laptops/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setLaptopDetails(data))
@@ -23,7 +23,7 @@ const LaptopDetails = () => {
         setLaptopDetails(updatedValue)
         toast("One item have been delivered sucessfully....")
 
-        const url = `https://secret-bastion-79495.herokuapp.com/laptops/${id}`;
+        const url = `https://laptop-warehouse-server-zhm5.onrender.com/laptops/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -44,7 +44,7 @@ const LaptopDetails = () => {
         event.target.reset();
         toast(`you have restock ${restock} items...`)
 
-        const url = `https://secret-bastion-79495.herokuapp.com/laptops/${id}`;
+        const url = `https://laptop-warehouse-server-zhm5.onrender.com/laptops/${id}`;
         fetch(url, {
             method: 'PUT',
             headers: {

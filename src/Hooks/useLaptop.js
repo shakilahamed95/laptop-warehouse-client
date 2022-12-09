@@ -9,7 +9,7 @@ const useLaptop = () => {
     const [isLoading, setLoading] = useState(true)
 
     useEffect(() => {
-        const url = 'https://secret-bastion-79495.herokuapp.com/laptops'
+        const url = 'https://laptop-warehouse-server-zhm5.onrender.com/laptops'
         fetch(url)
             .then(res => res.json())
             .then(data => setLaptops(data))

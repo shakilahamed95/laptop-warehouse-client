@@ -7,7 +7,7 @@ import SingleEmployee from '../SingleEmployee/SingleEmployee';
 const TeamMember = () => {
     const [employee, setEmployee] = useState([])
     useEffect(() => {
-        fetch('https://secret-bastion-79495.herokuapp.com/employee')   
+        fetch('https://laptop-warehouse-server-zhm5.onrender.com/employee')
             .then(res => res.json())
             .then(data => setEmployee(data))
     }, [])

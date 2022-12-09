@@ -8,7 +8,7 @@ const InventoryItems = ({ laptop }) => {
     const handleDelete = id => {
         const proceed = window.confirm('Do you really want to delete this item??');
         if (proceed) {
-            const url = `https://secret-bastion-79495.herokuapp.com/laptops/${id}`;
+            const url = `https://laptop-warehouse-server-zhm5.onrender.com/laptops/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })
